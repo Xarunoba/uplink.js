@@ -1,7 +1,7 @@
 # Uplink.js
 ![Node.js Workflow](https://github.com/Xarunoba/uplink.js/actions/workflows/node.js.yml/badge.svg)
 
-The JavaScript API to the Uplink CLI
+The JavaScript API to the official Storj CLI, 
 [Uplink](https://storj.io/).
 
 The code is forked from [rclone.js](https://github.com/sntran/rclone.js) and edited
