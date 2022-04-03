@@ -143,10 +143,6 @@ With that, there are a few things custom commands can be used:
 - Defines a module with the same name as existing API to extend it with new
   flags and/or backends.
 
-For a "real-life" example, check out [selfupdate](uplink/selfupdate.js), which
-overrides the built-in `selfupdate` command to download uplink executable if it
-has not been downloaded yet. Consecutive runs just call `selfupdate` API.
-
 For publishing a custom `uplink` command as NPM package, consider prefixing the
 package name with `uplink-` so it's clearer and not conflicting.
 
