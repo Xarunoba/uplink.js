@@ -1,5 +1,5 @@
 {
-  "name": "@xarunoba/uplink.js",
+  "name": "@xarunoba/uplink",
   "version": "0.1.0",
   "description": "JavaScript API for Uplink",
   "keywords": [
@@ -11,9 +11,7 @@
     "url": "https://github.com/Xarunoba/uplink.js/issues"
   },
   "license": "MIT",
-  "author": {
-    "name": "Jeter Jude Santos"
-  },
+  "author": "Jeter Jude Santos",
   "files": [
     "bin/uplink.js",
     "uplink/",
@@ -21,12 +19,14 @@
   ],
   "main": "uplink.js",
   "bin": {
-    "uplink": "./bin/uplink.js"
+    "uplink": "bin/uplink.js"
   },
-  "repository": "github:Xarunoba/uplink.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xarunoba/uplink.js.git"
+  },
   "scripts": {
-    "postinstall": "node bin/uplink.js selfupdate",
-    "test": "node test test/*-test.js"
+    "postinstall": "node bin/uplink.js selfupdate"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
@@ -46,5 +46,8 @@
     "arm64",
     "x64"
   ],
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories": {
+    "test": "test"
+  }
 }
