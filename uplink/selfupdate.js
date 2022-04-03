@@ -46,9 +46,10 @@ module.exports = function(options = {}) {
     check = false,
   } = options;
 
-  // Passes along to `uplink` if exists.
+  // Passes along to `uplink` if exists and check is false.
   if (existsSync(UPLINK_EXECUTABLE)) {
-    return this.selfupdate(options);
+    if (!check)
+      return console.log("Uplink executable exists.");
   }
 
   const baseUrl = "https://github.com/storj/storj/releases";
