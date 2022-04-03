@@ -121,8 +121,7 @@ const COMMANDS = [
   "rb",                   // remove a bucket
   "rm",                   // remove a file from a Storj bucket
   "setup",                // create an uplink config file
-  "share",                // shares restricted access to objects
-  "selfupdate",           // Updates the uplink binary
+  "share"                // shares restricted access to objects
 ];
 
 COMMANDS.forEach(commandName => {
