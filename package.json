@@ -19,18 +19,20 @@
   ],
   "main": "uplink.js",
   "bin": {
-    "uplink": "bin/uplink.js"
+    "uplink": "./bin/uplink.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Xarunoba/uplink.js.git"
   },
   "scripts": {
-    "postinstall": "node bin/uplink.js selfupdate"
+    "postinstall": "node bin/uplink.js selfupdate",
+    "test": "node test test/uplink-test.js"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
-    "mri": "^1.2.0"
+    "mri": "^1.2.0",
+    "node-fetch": "^2.6.7"
   },
   "engines": {
     "node": ">=12"
@@ -45,9 +47,5 @@
     "arm",
     "arm64",
     "x64"
-  ],
-  "devDependencies": {},
-  "directories": {
-    "test": "test"
-  }
+  ]
 }

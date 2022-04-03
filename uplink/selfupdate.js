@@ -2,14 +2,14 @@
 
 const { existsSync } = require("fs");
 const { join } = require("path");
-const https = require("https");
+const fetch = require("node-fetch");
+const AdmZip = require("adm-zip");
+const { chmodSync } = require("fs");
 
 let { platform, arch } = process;
 
 switch (platform) {
   case "darwin":
-    platform = "darwin";
-    break;
   case "freebsd":
   case "linux":
     break;
@@ -28,23 +28,6 @@ switch (arch) {
     arch = "amd64";
   default:
     break;
-}
-
-/**
- * Fetches a remote URL
- * @param {string} url the remote URL to fetch.
- * @returns {Promise<Buffer>} the response as Buffer.
- */
-async function fetch(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, (response) => {
-      const chunks = [];
-      response.on("data", (chunk) => chunks.push(chunk));
-      response.on("end", () => {
-        resolve(Buffer.concat(chunks));
-      });
-    }).on("error", reject);
-  });
 }
 
 const UPLINK_DIR = join(__dirname, "..", "bin");
@@ -68,22 +51,25 @@ module.exports = function(options = {}) {
     return this.selfupdate(options);
   }
 
-  const baseUrl = "https://github.com/storj/storj/releases/";
+  const baseUrl = "https://github.com/storj/storj/releases";
+
   const apiUrl = "https://api.github.com/repos/storj/storj/releases/latest";
 
   if (check) {
     return fetch(apiUrl)
       .then(response => response.json())
-      .then(data => console.log(`The latest version is: ${ data.tag_name }`));
+      .then(data => {
+        console.log(`The latest version is: ${ data.tag_name }`);
+        version = data.tag_name;
+    });
   }
 
   console.log("Downloading uplink...");
   const archiveName = version ? `download/${ version }/uplink` : `latest/download/uplink`;
-  return fetch(`${ baseUrl }/${ archiveName }_${ platform }_${ arch }.zip`).then(archive => {
+  return fetch(`${ baseUrl }/${ archiveName }_${ platform }_${ arch }.zip`)
+    .then(response => response.buffer())
+    .then(archive => {
     console.log("Extracting uplink...");
-    const AdmZip = require("adm-zip");
-    const { chmodSync } = require("fs");
-
     const zip = new AdmZip(archive);
     zip.getEntries().forEach((entry) => {
       const { name, entryName } = entry;
