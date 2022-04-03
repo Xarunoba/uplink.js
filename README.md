@@ -1,4 +1,5 @@
 # Uplink.js
+![Node.js Workflow](https://github.com/Xarunoba/uplink.js/actions/workflows/node.js.yml/badge.svg)
 
 The JavaScript API to the Uplink CLI
 [Uplink](https://storj.io/).
@@ -11,13 +12,18 @@ a JavaScript API are included.
 
 Special thanks to [@sntran](https://github.com/sntran) for developing `rclone.js`
 
-**WARNING: This package is untested.**
 As this is my first ever package, contributions/PRs are highly welcomed.
 
 ## Installation
 
+NPM:
 ```sh
-npm install uplink.js
+npm install -D @xarunoba/uplink.js
+```
+
+PNPM:
+```sh
+pnpm install -D @xarunoba/uplink.js
 ```
 
 After installation, the latest binary of `uplink` is also fetched based on
@@ -30,11 +36,10 @@ environment variable to set the path to that custom binary.
 
 ### Node.js
 
-Except `selfupdate`, which is used to update `uplink` binary, all API functions
-return a child process whose events we can listen to. Optional flags can be
-passed as an object to the last argument of the function call. Except removing
-the `--` prefix, there is no other conversion to the flag name. JSON values are
-stringified before passed to `uplink`.
+All API functions return a child process whose events we can listen to. 
+Optional flags can be passed as an object to the last argument of the function call. 
+Except removing the `--` prefix, there is no other conversion to the flag name.
+JSON values are stringified before passed to `uplink`.
 
 Each API functions can also take options for the spawned child process. See
 https://nodejs.org/api/child_process.html#child_processspawncommand-args-options
@@ -102,17 +107,39 @@ uplink("newcommand", "source:", "target:", {
 
 This simple CLI calls the JS API above and outputs `stdout` and `stderr`.
 
+NPM:
 ```sh
 $ npx uplink ls
+CREATED                NAME
+2022-04-03 15:53:40    something1
+2022-03-31 15:06:35    something2
+2022-04-02 21:02:41    something3
+```
+
+PNPM:
+```sh
+$ pnpm exec uplink ls
+CREATED                NAME
+2022-04-03 15:53:40    something1
+2022-03-31 15:06:35    something2
+2022-04-02 21:02:41    something3
 ```
 
 ### Custom command
 
+**WARNING: This feature is untested for `uplink.js`**.
+
 The CLI also supports executing a custom JS-based command to further extend
 usage outside of what the official `uplink` offers:
 
+NPM:
 ```sh
 $ npx uplink echo.js arg1 --string value arg2 --boolean
+```
+
+PNPM:
+```sh
+$ pnpm exec uplink echo.js arg1 --string value arg2 --boolean
 ```
 
 The custom JS file just needs to export a function that takes the arguments and
