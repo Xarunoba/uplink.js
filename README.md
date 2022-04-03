@@ -44,10 +44,9 @@ for their documentation.
 const uplink = require("uplink.js");
 
 const ls = uplink.ls("source:", {
-  "max-depth": 1,
   // Spawn options:
   "env": {
-    UPLINK_CONFIG: "~/.config/uplink/uplink.conf",
+
   },
   "shell": "/bin/sh",
 });
@@ -68,10 +67,9 @@ const uplink = require("uplink.js").promises;
 
 (async function() {
   const results = await uplink.ls("source:", {
-    "max-depth": 1,
     // Spawn options:
     "env": {
-      UPLINK_CONFIG: "~/.config/uplink/uplink.conf",
+
     },
     "shell": "/bin/sh",
   });
@@ -105,16 +103,7 @@ uplink("newcommand", "source:", "target:", {
 This simple CLI calls the JS API above and outputs `stdout` and `stderr`.
 
 ```sh
-$ npx uplink --version
-uplink v1.54.0
-- os/arch: darwin/amd64
-- go version: go1.15.7
-```
-
-```sh
-$ npx uplink ls source: --max-depth 1
-          -1 2020-12-12 10:01:44        -1 Documents
-          -1 2020-12-11 16:24:20        -1 Pictures
+$ npx uplink ls
 ```
 
 ### Custom command
