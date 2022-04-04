@@ -1,0 +1,9 @@
+# Dependency directories
+node_modules/
+
+# Binaries
+bin/uplink
+bin/uplink.exe
+
+# License
+LICENSE
