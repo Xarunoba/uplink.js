@@ -1,7 +1,7 @@
 {
   "name": "@xarunoba/uplink.js",
   "version": "0.1.21",
-  "description": "JavaScript API for Uplink",
+  "description": "JavaScript API for Uplink CLI",
   "keywords": [
     "uplink",
     "storj"
