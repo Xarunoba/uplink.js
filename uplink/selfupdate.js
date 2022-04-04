@@ -1,6 +1,6 @@
 // Custom command to selfupdate uplink binary.
 
-const { existsSync } = require("fs");
+const { existsSync, unlinkSync } = require("fs");
 const { join } = require("path");
 const fetch = require("node-fetch");
 const AdmZip = require("adm-zip");
@@ -48,8 +48,8 @@ module.exports = function(options = {}) {
 
   // Passes along to `uplink` if exists and check is false.
   if (existsSync(UPLINK_EXECUTABLE)) {
-    if (!check)
-      return console.log("Uplink executable exists.");
+    console.log("Uplink executable exists. Overwriting file.");
+    unlinkSync(UPLINK_EXECUTABLE);
   }
 
   const baseUrl = "https://github.com/storj/storj/releases";
