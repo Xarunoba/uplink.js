@@ -26,7 +26,7 @@
     "url": "git+https://github.com/Xarunoba/uplink.js.git"
   },
   "scripts": {
-    "postinstall": "node bin/uplink.js selfupdate",
+    "postinstall": "node bin/uplink.js update",
     "test": "node test test/uplink-test.js"
   },
   "dependencies": {
