@@ -32,6 +32,12 @@ const subprocess = command ?
       command.call(uplink, ...commandArguments, flags) :
       uplink(...args, flags);
 
+try {
+  if(require.main === module) // If from CLI
+    process.stdin.pipe(subprocess.stdin); 
+} catch (error) {
+}
+
 subprocess.stdout?.on("data", (data) => {
   process.stdout.write(data);
 });
