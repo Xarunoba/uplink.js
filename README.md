@@ -127,8 +127,6 @@ CREATED                NAME
 
 ### Custom command
 
-**WARNING: This feature is untested for `uplink.js`**.
-
 The CLI also supports executing a custom JS-based command to further extend
 usage outside of what the official `uplink` offers:
 
