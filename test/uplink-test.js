@@ -42,7 +42,7 @@ mockChildProcess.stderr = new Readable({
 test("should spawn a child process with uplink executable and arguments", () => {
   const spawnargs = ["command", "arg1", "--string-flag", "string-value", "arg2"];
   const subprocess = uplink(...spawnargs);
-  assert.match(subprocess.spawnfile, /bin\/uplink/);
+  assert.match(subprocess.spawnfile, /uplink/);
   assert.deepEqual(subprocess.spawnargs, spawnargs);
 });
 
